@@ -13,10 +13,10 @@
 </head>
 <body class="subPages">
     <header class="nav-BMR">
-        <h2 class="logo">Logo</h2>
+        <h2 class="logo">GetFit</h2>
         <nav class="navigation">
-            <a href="#">BMR Calculator</a>
             <a href="/calorieCalculator">Calorie Calculator</a>
+            <a href="#">BMR Calculator</a>
             <a href="/mainPage">Login</a>
         </nav>
     </header>
@@ -51,8 +51,16 @@
 
                 <div class="result">
                     <button class="calculate-btn">Calculate</button>
-                    <div class="result-message"><span class="calories"></span>Calories/day</div>
-                </div>
+                    <div class="result-message">
+                      <span class="calories"></span> Calories/day
+                    </div>
+                    <div class="recommended-intake">
+                      <div><span class="label">Protein:</span> <span class="value" id="protein-intake"></span> g/day</div>
+                      <div><span class="label">Carbs:</span> <span class="value" id="carbs-intake"></span> g/day</div>
+                      <div><span class="label">Fat:</span> <span class="value" id="fat-intake"></span> g/day</div>
+                    </div>
+                  </div>
+                  
                 
             </div>
         </div>
