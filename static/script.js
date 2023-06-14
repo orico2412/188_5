@@ -4,7 +4,6 @@ const registerLink = document.querySelector('.register-link');
 const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
-
 registerLink.addEventListener('click', () => {
   wrapper.classList.add('active');
 });
@@ -21,7 +20,6 @@ iconClose.addEventListener('click', () => {
   wrapper.classList.remove('active-popup');
 });
 
-// Function to check if the login popup should be displayed
 function checkLoginPopup() {
   const isMinimized = window.innerWidth <= 768;
   const isActive = wrapper.classList.contains('active-popup');
@@ -31,6 +29,5 @@ function checkLoginPopup() {
   }
 }
 
-// Check login popup initially and on window resize
 checkLoginPopup();
 window.addEventListener('resize', checkLoginPopup);

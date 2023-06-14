@@ -9,13 +9,12 @@
     </title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script> 
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="mainPage">
     <header>
         <h2 class="logo">GetFit</h2>
         <nav class="navigation">
-            <a href="/calorieCalculator">Calorie Calculator</a>
-            <a href="/bmrPage">BMR Calculator</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
@@ -37,10 +36,7 @@
                     <input type="password" id="passwordInput" required>
                     <label for="passwordInput">password</label>
                 </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">Remember me</label>
-                    <a href="#">Forgot Password?</a>
-                </div>
+                
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
                     <p>Don't have an account?
@@ -69,10 +65,7 @@
                     <input type="password" id="passwordInput" required>
                     <label for="passwordInput">password</label>
                 </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">I agree to the terms & conditions</label>
-                    
-                </div>
+    
                 <button type="submit" class="btn">Register</button>
                 <div class="login-register">
                     <p>Already have an account?

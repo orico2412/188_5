@@ -26,4 +26,5 @@ calculateBtn.addEventListener("click", () => {
   proteinIntake.textContent = proteinIntakeValue;
   carbsIntake.textContent = carbsIntakeValue;
   fatIntake.textContent = fatIntakeValue;
+  
 });

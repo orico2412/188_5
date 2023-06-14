@@ -17,7 +17,7 @@
         <nav class="navigation">
             <a href="/calorieCalculator">Calorie Calculator</a>
             <a href="#">BMR Calculator</a>
-            <a href="/mainPage">Login</a>
+            <a href="/mainPage">Sign Out</a>
         </nav>
     </header>
     <div class="wrapper-BMR">
@@ -26,7 +26,7 @@
             <div class="controls">
                 <form>
                     <h3>Age</h3>
-                    <input type="text" id="age" value="28"/>
+                    <input type="number" id="age" value="28" min="0" max="99" maxlength="2" required />
 
                     <div class="gender">
                         <h3>Gender</h3>
@@ -38,13 +38,13 @@
 
                     <div class="height">
                         <h3>Height</h3>
-                        <input type="text" id="height" value="180" />
+                        <input type="number" id="height" value="180" min="0" max="999" maxlength="3" required />
                         <div class="unit">cm</div>
                     </div>
 
                     <div class="weight">
                         <h3>Weight</h3>
-                        <input type="text" id="weight" value="60">
+                        <input type="number" id="weight" value="60" min="0" max="999" maxlength="3" required />
                         <div class="unit">kg</div>
                     </div>
                 </form>
