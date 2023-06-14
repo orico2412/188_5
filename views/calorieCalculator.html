@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Counter</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="calorieCounter.js"></script>
+</head>
+<body class="subPages">
+    <header class="nav-BMR">
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="/bmrPage">BMR Calculator</a>
+            <a href="#">Calorie Calculator</a>
+            <a href="/mainPage">Login</a>
+        </nav>
+    </header>
+
+    <h2 id="calorie-title">Calorie Counter</h2>
+
+    <div class="wrapper-calorie">
+        <select class="food-dropdown">
+            <option value="bread">bread</option>
+            <option value="pasta">pasta</option>
+            <option value="salad">salad</option>
+            <option value="rice">rice</option>
+            <option value="pizza">pizza</option>
+            <!-- Add more food options here -->
+        </select>
+        <input type="text" class="food-weight" placeholder="Enter weight in kg">
+        <button class="calculate-btn">Calculate</button>
+        <div class="nutrition-info">
+            <div class="nutrition-line">
+                <span class="nutrition-label">Protein:</span>
+                <span class="nutrition-value" id="protein">0g</span>
+            </div>
+            <div class="nutrition-line">
+                <span class="nutrition-label">Carbs:</span>
+                <span class="nutrition-value" id="carbs">0g</span>
+            </div>
+            <div class="nutrition-line">
+                <span class="nutrition-label">Fat:</span>
+                <span class="nutrition-value" id="fat">0g</span>
+            </div>
+            <div class="nutrition-line">
+                <span class="nutrition-label">Calories:</span>
+                <span class="nutrition-value" id="calories">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repeat the above HTML structure for additional wrappers -->
+
+</body>
+</html>
