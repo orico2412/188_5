@@ -35,12 +35,8 @@ app.post('/formRegister', (req, res) => {
         res.status(500).send('Error registering user');
         return;
       }
-      // Manually send redirect response
-      res.writeHead(302, {
-        Location: '/mainPage'
-      });
-      res.end();
     });
+    res.redirect('/login');
   });
 
 
