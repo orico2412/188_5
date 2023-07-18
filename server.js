@@ -17,44 +17,78 @@ app.use(cookie());
 
 app.all('/',CRUD.createUsersTable);
 
+
 //routing
 app.get('/login', (req,res)=>{
-    res.sendFile(path.join(__dirname, "views/mainPage.html"));
+res.sendFile(path.join(__dirname, "views/mainPage.html"));
 });
 
+app.all('/foodTable', CRUD.createFoodTable);
+
 app.get('/bmrPage', (req,res)=>{
-    res.sendFile(path.join(__dirname, "views/bmrPage.html"));
+res.sendFile(path.join(__dirname, "views/bmrPage.html"));
 });
 
 app.post('/formRegister', (req, res) => {
-    console.log('Received formRegister request');
-    const { email, username, password } = req.body;
-    CRUD.createNewUser(email, username, password, (err) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Error registering user');
-        return;
-      }
-    });
-    res.redirect('/login');
-  });
+console.log('Received formRegister request');
+const { email, username, password } = req.body;
+CRUD.createNewUser(email, username, password, (err) => {
+    if (err) {
+    console.log(err);
+    res.status(500).send('Error registering user');
+    return;
+    }
+});
+res.redirect('/login');
+});
 
 
 app.get('/calorieCalculator', (req,res)=>{
-    res.sendFile(path.join(__dirname, "views/calorieCalculator.html"));
+res.sendFile(path.join(__dirname, "views/calorieCalculator.html"));
 });
+
+app.get('/foodOptions', CRUD.getAllFoods);
+
+app.get('/foodTable/:name', CRUD.getFoodInfo);
 
 app.get('/mainPage', (req,res)=>{
-    res.redirect('/');
+res.redirect('/');
 });
 
-app.post('/formLogin', (req,res)=>{
-    res.sendFile(path.join(__dirname, "views/bmrPage.html"));
+app.all('/drop',CRUD.dropAllTables);
+
+app.post('/formLogin', (req, res) => {
+    console.log(req.body);
+    const { emailInput, passwordInput } = req.body;
+    console.log(emailInput, passwordInput);
+    CRUD.validateUser(emailInput, passwordInput, (err, userExists) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error checking user');
+        return;
+      }
+      
+      if(userExists) {
+        res.sendFile(path.join(__dirname, "views/bmrPage.html"));
+    } else {
+        res.status(401).send(`
+        <html>
+            <body>
+                <script>
+                    alert("User doesn't exist!");
+                    setTimeout(function(){
+                        window.location.href = "/login";
+                    }, 700);
+                </script>
+            </body>
+        </html>
+    `);
+    
+    }
+      
+    });
 });
-
-//app.post('/formRegister', CRUD.createUsersTable);
-
 //set up listen
 app.listen(port, ()=>{
-    console.log("server is running on port", port);
+console.log("server is running on port", port);
 });

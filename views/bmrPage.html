@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Calorie Calculator
-    </title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="scriptPage2.js"></script>
-   
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+    Calorie Calculator
+</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="scriptPage2.js"></script>
+
 </head>
 <body class="subPages">
-    <header class="nav-BMR">
-        <h2 class="logo">GetFit</h2>
-        <nav class="navigation">
-            <a href="/calorieCalculator">Calorie Calculator</a>
-            <a href="#">BMR Calculator</a>
-            <a href="/mainPage">Sign Out</a>
-        </nav>
-    </header>
-    <div class="wrapper-BMR">
-        <div class ="bmr-calculator">
-            <h2>BMR Calculator</h2>
-            <div class="controls">
-                <form>
-                    <h3>Age</h3>
-                    <input type="number" id="age" value="28" min="0" max="99" maxlength="2" required />
+<header class="nav-BMR">
+    <h2 class="logo">GetFit</h2>
+    <nav class="navigation">
+        <a href="/calorieCalculator">Calorie Calculator</a>
+        <a href="#">BMR Calculator</a>
+        <a href="/mainPage">Sign Out</a>
+    </nav>
+</header>
+<div class="wrapper-BMR">
+    <div class ="bmr-calculator">
+        <h2>BMR Calculator</h2>
+        <div class="controls">
+            <form>
+                <h3>Age</h3>
+                <input type="number" id="age" value="28" min="0" max="99" maxlength="2" required />
 
-                    <div class="gender">
-                        <h3>Gender</h3>
-                        <input type="radio" id="male" value="male" name="gender" checked />
-                        <label for="male" >Male</label>
-                        <input type="radio" id="female" value="female" name="gender" />
-                        <label for="female">Female</label>
-                    </div>
+                <div class="gender">
+                    <h3>Gender</h3>
+                    <input type="radio" id="male" value="male" name="gender" checked />
+                    <label for="male" >Male</label>
+                    <input type="radio" id="female" value="female" name="gender" />
+                    <label for="female">Female</label>
+                </div>
 
-                    <div class="height">
-                        <h3>Height</h3>
-                        <input type="number" id="height" value="180" min="0" max="999" maxlength="3" required />
-                        <div class="unit">cm</div>
-                    </div>
+                <div class="height">
+                    <h3>Height</h3>
+                    <input type="number" id="height" value="180" min="0" max="250" maxlength="3" required />
+                    <div class="unit">cm</div>
+                </div>
 
-                    <div class="weight">
-                        <h3>Weight</h3>
-                        <input type="number" id="weight" value="60" min="0" max="999" maxlength="3" required />
-                        <div class="unit">kg</div>
-                    </div>
-                </form>
+                <div class="weight">
+                    <h3>Weight</h3>
+                    <input type="number" id="weight" value="60" min="0" max="250" maxlength="3" required />
+                    <div class="unit">kg</div>
+                </div>
+            </form>
 
-                <div class="result">
-                    <button class="calculate-btn">Calculate</button>
-                    <div class="result-message">
-                      <span class="calories"></span> Calories/day
-                    </div>
-                    <div class="recommended-intake">
-                      <div><span class="label">Protein:</span> <span class="value" id="protein-intake"></span> g/day</div>
-                      <div><span class="label">Carbs:</span> <span class="value" id="carbs-intake"></span> g/day</div>
-                      <div><span class="label">Fat:</span> <span class="value" id="fat-intake"></span> g/day</div>
-                    </div>
-                  </div>
-            </div>
+            <div class="result">
+                <button class="calculate-btn">Calculate</button>
+                <div class="result-message">
+                    <span class="calories"></span> Calories/day
+                </div>
+                <div class="recommended-intake">
+                    <div><span class="label">Protein:</span> <span class="value" id="protein-intake"></span> g/day</div>
+                    <div><span class="label">Carbs:</span> <span class="value" id="carbs-intake"></span> g/day</div>
+                    <div><span class="label">Fat:</span> <span class="value" id="fat-intake"></span> g/day</div>
+                </div>
+                </div>
         </div>
     </div>
+</div>
 </body>
 </html>

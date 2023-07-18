@@ -10,33 +10,43 @@ let totalCarbs = 0;
 let totalFat = 0;
 let totalCalories = 0;
 
-const foodOptions = {
-  bread: { protein: 90, carbs: 490, fat: 32, calories: 2640 },
-  pasta: { protein: 50, carbs: 250, fat: 11, calories: 1310 },
-  salad: { protein: 12.5, carbs: 32.2, fat: 0.7, calories: 160 },
-  rice: { protein: 27, carbs: 280, fat: 3, calories: 1300 },
-  pizza: { protein: 110, carbs: 330, fat: 100, calories: 2660 },
-  // Add more food options here
+let foodOptions = {};
+
+const fetchFoodOptions = async () => {
+try {
+  const response = await fetch('/foodOptions');
+  if (response.ok) {
+    foodOptions = await response.json();
+    populateFoodDropdowns();
+  } else {
+    console.log('Error fetching food options:', response.status);
+  }
+} catch (error) {
+  console.log('Error fetching food options:', error);
+}
 };
 
-wrappers.forEach((wrapper) => {
-  const foodDropdown = wrapper.querySelector('.food-dropdown');
-  const foodWeight = wrapper.querySelector('.food-weight');
-  const proteinValue = wrapper.querySelector('.nutrition-value#protein');
-  const carbsValue = wrapper.querySelector('.nutrition-value#carbs');
-  const fatValue = wrapper.querySelector('.nutrition-value#fat');
-  const caloriesValue = wrapper.querySelector('.nutrition-value#calories');
-  const calculateBtn = wrapper.querySelector('.calculate-btn');
+const populateFoodDropdowns = () => {
+const foodDropdowns = document.querySelectorAll('.food-dropdown');
+foodDropdowns.forEach((dropdown) => {
+  foodOptions.forEach((food) => {
+    const option = document.createElement('option');
+    option.value = food;
+    option.textContent = food;
+    dropdown.appendChild(option);
+  });
+});
+};
 
-  calculateBtn.addEventListener('click', () => {
-    const selectedFood = foodDropdown.value;
-    const weight = parseFloat(foodWeight.value);
-
-    if (selectedFood && weight) {
-      const nutritionInfo = foodOptions[selectedFood];
-      const protein = nutritionInfo.protein * weight;
+const calculateNutrition = async (selectedFood, weight, proteinValue, carbsValue, fatValue, caloriesValue) => {
+if (selectedFood && weight) {
+  try {
+    const response = await fetch(`/foodTable/${selectedFood}`);
+    if (response.ok) {
+      const nutritionInfo = await response.json();
+      const protein = nutritionInfo.proteins * weight;
       const carbs = nutritionInfo.carbs * weight;
-      const fat = nutritionInfo.fat * weight;
+      const fat = nutritionInfo.fats * weight;
       const calories = nutritionInfo.calories * weight;
 
       proteinValue.textContent = protein.toFixed(2) + 'g';
@@ -55,6 +65,36 @@ wrappers.forEach((wrapper) => {
       totalCarbsValue.textContent = totalCarbs.toFixed(2) + 'g';
       totalFatValue.textContent = totalFat.toFixed(2) + 'g';
       totalCaloriesValue.textContent = totalCalories.toFixed(2);
+    } else {
+      console.log('Error fetching nutrition info:', response.status);
     }
-  });
+  } catch (error) {
+    console.log('Error fetching nutrition info:', error);
+  }
+}
+};
+
+
+wrappers.forEach((wrapper) => {
+const foodDropdown = wrapper.querySelector('.food-dropdown');
+const foodWeight = wrapper.querySelector('.food-weight');
+const proteinValue = wrapper.querySelector('.nutrition-value#proteins');
+const carbsValue = wrapper.querySelector('.nutrition-value#carbs');
+const fatValue = wrapper.querySelector('.nutrition-value#fat');
+const caloriesValue = wrapper.querySelector('.nutrition-value#calories');
+const calculateBtn = wrapper.querySelector('.calculate-btn');
+
+calculateBtn.addEventListener('click', () => {
+  const selectedFood = foodDropdown.value;
+  const weight = parseFloat(foodWeight.value);
+
+  if (weight < 0) {
+    alert('Please enter a positive value for food weight.');
+    return; // Stop further execution
+  }
+
+  calculateNutrition(selectedFood, weight, proteinValue, carbsValue, fatValue, caloriesValue);
 });
+});
+// Fetch the food options when the page loads
+fetchFoodOptions();

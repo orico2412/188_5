@@ -1,0 +1,38 @@
+REQUIREMENTS
+modules:express, path, mysql2, body-parser, cookie-parser, csvtojson
+how to delete path: /drop
+syntax: 
+
+const createUsersTable = (req, res) => {
+    const Q1 = 'CREATE TABLE IF NOT EXISTS `users` (email VARCHAR(255) PRIMARY KEY NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255)) ENGINE=InnoDB DEFAULT CHARSET=utf8';
+    SQL.query(Q1, (err, mysqlres) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+  
+      console.log('User table created successfully');
+      res.redirect('/foodTable');
+    });
+  };
+  
+
+const createFoodTable = (req, res) => {
+    const Q2 = `CREATE TABLE IF NOT EXISTS food (
+      name VARCHAR(255) PRIMARY KEY NOT NULL,
+      calories INT,
+      carbs INT,
+      proteins INT,
+      fats INT
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8`;
+  
+    SQL.query(Q2, (err, mysqlres) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+  
+      console.log('Food table created successfully');
+      insertDataFoods(req, res); // Call the function to insert food data after creating the table
+    });
+  };

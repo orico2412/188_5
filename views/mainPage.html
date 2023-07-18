@@ -18,6 +18,8 @@
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
+        <h1>WELCOME</h1>
+     
 
     <div class="wrapper">
         <span class="icon-close">
@@ -28,12 +30,12 @@
             <form action="/formLogin" method="post">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="email" id="emailInput" required>
+                    <input type="email" id="emailInput" name="emailInput" required>
                     <label for="emailInput">email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock"></ion-icon></span>
-                    <input type="password" id="passwordInput" required>
+                    <input type="password" id="passwordInput" name="passwordInput" required>
                     <label for="passwordInput">password</label>
                 </div>
                 
@@ -46,7 +48,9 @@
                
             </form>
         </div>  
-        
+    
+    
+
         <div class="form-box register">
             <h2>Registration</h2>
             <form action="/formRegister" method="post">

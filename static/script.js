@@ -5,28 +5,28 @@ const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
 registerLink.addEventListener('click', () => {
-  wrapper.classList.add('active');
+wrapper.classList.add('active');
 });
 
 loginLink.addEventListener('click', () => {
-  wrapper.classList.remove('active');
+wrapper.classList.remove('active');
 });
 
 btnPopup.addEventListener('click', () => {
-  wrapper.classList.add('active-popup');
+wrapper.classList.add('active-popup');
 });
 
 iconClose.addEventListener('click', () => {
-  wrapper.classList.remove('active-popup');
+wrapper.classList.remove('active-popup');
 });
 
 function checkLoginPopup() {
-  const isMinimized = window.innerWidth <= 768;
-  const isActive = wrapper.classList.contains('active-popup');
+const isMinimized = window.innerWidth <= 768;
+const isActive = wrapper.classList.contains('active-popup');
 
-  if (isMinimized && !isActive) {
-    wrapper.classList.add('active-popup');
-  }
+if (isMinimized && !isActive) {
+  wrapper.classList.add('active-popup');
+}
 }
 
 checkLoginPopup();
